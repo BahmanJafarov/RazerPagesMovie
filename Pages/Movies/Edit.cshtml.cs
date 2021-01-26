@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RazerPagesMovie.Data;
 using RazerPagesMovie.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RazerPagesMovie.Pages.Movies
 {
@@ -23,7 +20,7 @@ namespace RazerPagesMovie.Pages.Movies
         [BindProperty]
         public Movie Movie { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -69,7 +66,7 @@ namespace RazerPagesMovie.Pages.Movies
             return RedirectToPage("./Index");
         }
 
-        private bool MovieExists(string id)
+        private bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.ID == id);
         }

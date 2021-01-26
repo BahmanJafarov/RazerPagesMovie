@@ -10,8 +10,8 @@ using RazerPagesMovie.Data;
 namespace RazerPagesMovie.Migrations
 {
     [DbContext(typeof(RazerPagesMovieContext))]
-    [Migration("20210125212220_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210126202713_New_DataAnnotations")]
+    partial class New_DataAnnotations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,20 +23,29 @@ namespace RazerPagesMovie.Migrations
 
             modelBuilder.Entity("RazerPagesMovie.Models.Movie", b =>
                 {
-                    b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Genre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Rating")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.HasKey("ID");
 

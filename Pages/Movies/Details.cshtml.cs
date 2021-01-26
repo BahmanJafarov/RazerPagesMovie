@@ -21,7 +21,7 @@ namespace RazerPagesMovie.Pages.Movies
 
         public Movie Movie { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
@@ -34,6 +34,7 @@ namespace RazerPagesMovie.Pages.Movies
             {
                 return NotFound();
             }
+
             return Page();
         }
     }
