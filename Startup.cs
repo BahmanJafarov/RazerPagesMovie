@@ -29,6 +29,9 @@ namespace RazerPagesMovie
 
             services.AddDbContext<RazerPagesMovieContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RazerPagesMovieContext")));
+
+            services.AddDbContext<CustomerDbContext>(options => 
+                options.UseInMemoryDatabase("name"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
